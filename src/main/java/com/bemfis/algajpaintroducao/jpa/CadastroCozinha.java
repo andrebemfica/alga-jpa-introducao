@@ -23,6 +23,11 @@ public class CadastroCozinha {
         return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
     }
 
+    public Cozinha buscar (Long id){
+        //faz um select from Cozinha where id é igual ao id recebido.
+        return manager.find(Cozinha.class, id);
+    }
+
     //quando fazemos uma modificação no nosso banco de dados precisamos de uma transação
     @Transactional //esse método será executado dentro de uma transação
     public Cozinha adicionar(Cozinha cozinha){
