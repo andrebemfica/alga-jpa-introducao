@@ -4,6 +4,7 @@ import com.bemfis.algajpaintroducao.domain.model.Cozinha;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,12 @@ public class CadastroCozinha {
         //createQuery retorna uma consulta tipada de cozinha (TypedQuery).
         //getResultList retorna uma lista de cozinha.
         return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
+    }
+
+    //quando fazemos uma modificação no nosso banco de dados precisamos de uma transação
+    @Transactional //esse método será executado dentro de uma transação
+    public Cozinha adicionar(Cozinha cozinha){
+        return manager.merge(cozinha);
     }
 
 }
