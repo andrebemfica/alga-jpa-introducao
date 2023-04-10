@@ -2,11 +2,10 @@ package com.bemfis.algajpaintroducao.jpa;
 
 import com.bemfis.algajpaintroducao.AlgaJpaIntroducaoApplication;
 import com.bemfis.algajpaintroducao.domain.model.Cozinha;
+import com.bemfis.algajpaintroducao.domain.repository.CozinhaRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
-
-import java.util.List;
 
 public class BuscaCozinhaMain {
     public static void main(String[] args) {
@@ -17,9 +16,9 @@ public class BuscaCozinhaMain {
                 .web(WebApplicationType.NONE) //afirma que não é aplicação web.
                 .run(args); //argumentos do método main.
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepository cozinhas = applicationContext.getBean(CozinhaRepository.class);
 
-        Cozinha cozinha = cadastroCozinha.buscar(1L);
+        Cozinha cozinha = cozinhas.porId(1L);
 
         System.out.println(cozinha.getNome());
 

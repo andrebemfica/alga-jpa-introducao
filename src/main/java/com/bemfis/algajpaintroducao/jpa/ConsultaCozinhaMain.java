@@ -2,6 +2,7 @@ package com.bemfis.algajpaintroducao.jpa;
 
 import com.bemfis.algajpaintroducao.AlgaJpaIntroducaoApplication;
 import com.bemfis.algajpaintroducao.domain.model.Cozinha;
+import com.bemfis.algajpaintroducao.domain.repository.CozinhaRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
@@ -21,11 +22,11 @@ public class ConsultaCozinhaMain {
 
         //gera um bean do tipo CadastroCozinha, uma instância.
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepository cozinhas = applicationContext.getBean(CozinhaRepository.class);
 
-        List<Cozinha> cozinhas = cadastroCozinha.listar();
+        List<Cozinha> todasCozinhas = cozinhas.todas();
 
-        for (Cozinha cozinha : cozinhas) {
+        for (Cozinha cozinha : todasCozinhas) {
             System.out.println(cozinha.getNome());
         }
 

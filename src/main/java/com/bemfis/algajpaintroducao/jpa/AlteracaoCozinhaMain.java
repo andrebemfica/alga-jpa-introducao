@@ -2,6 +2,7 @@ package com.bemfis.algajpaintroducao.jpa;
 
 import com.bemfis.algajpaintroducao.AlgaJpaIntroducaoApplication;
 import com.bemfis.algajpaintroducao.domain.model.Cozinha;
+import com.bemfis.algajpaintroducao.domain.repository.CozinhaRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
@@ -15,13 +16,13 @@ public class AlteracaoCozinhaMain {
                 .web(WebApplicationType.NONE) //afirma que não é aplicação web.
                 .run(args); //argumentos do método main.
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepository cozinhas = applicationContext.getBean(CozinhaRepository.class);
 
         Cozinha cozinha = new Cozinha();
         cozinha.setId(1L);
         cozinha.setNome("Brasileira");
 
-        cozinha = cadastroCozinha.salvar(cozinha);
+        cozinha = cozinhas.adicionar(cozinha);
 
     }
 }
