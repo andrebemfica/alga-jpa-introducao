@@ -24,17 +24,23 @@ public class CadastroCozinha {
         return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
     }
 
-
     public Cozinha buscar (Long id){
         //faz um select from Cozinha where id é igual ao id recebido.
         return manager.find(Cozinha.class, id);
     }
 
-
     //quando fazemos uma modificação no nosso banco de dados precisamos de uma transação
+    //método adicionar foi alterado para salvar, já que serve para adicionar e atualizar
     @Transactional //esse método será executado dentro de uma transação
     public Cozinha salvar(Cozinha cozinha){
         return manager.merge(cozinha);
+    }
+
+    @Transactional
+    public void remover(Cozinha cozinha){
+        //we need to change from transient state to managed state for the JPA to be able to manage.
+        cozinha = buscar(cozinha.getId());
+        manager.remove(cozinha);
     }
 
 }
