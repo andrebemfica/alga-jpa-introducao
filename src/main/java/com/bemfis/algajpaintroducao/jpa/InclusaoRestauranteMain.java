@@ -18,11 +18,16 @@ public class InclusaoRestauranteMain {
 
         RestauranteRepository restaurantes = applicationContext.getBean(RestauranteRepository.class);
 
-        Restaurante restaurante = new Restaurante();
-        restaurante.setId(3L);
-        restaurante.setNome("LaisBem");
-        restaurante.setTaxaFrete(new BigDecimal(12.50));
+        Restaurante restaurante1 = new Restaurante();
+        restaurante1.setNome("LaisBem");
+        restaurante1.setTaxaFrete(new BigDecimal(12.50));
 
-        restaurantes.adicionar(restaurante);
+        restaurantes.adicionar(restaurante1);
+
+        Restaurante restaurante2 = new Restaurante();
+        restaurante2.setNome("BemGuedes");
+        restaurante2.setTaxaFrete(new BigDecimal(22.50));
+
+        restaurantes.adicionar(restaurante2);
     }
 }
