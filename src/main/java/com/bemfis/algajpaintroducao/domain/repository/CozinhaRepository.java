@@ -1,6 +1,7 @@
 package com.bemfis.algajpaintroducao.domain.repository;
 
 import com.bemfis.algajpaintroducao.domain.model.Cozinha;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
